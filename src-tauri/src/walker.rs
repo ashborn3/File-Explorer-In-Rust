@@ -1,10 +1,19 @@
-use std::env;
 use std::fs;
 use std::io;
 use std::path::Path;
 use std::time::UNIX_EPOCH;
 
 #[tauri::command]
+pub fn get_files_and_details_as_vector(path: String) -> Vec<(String, u64, String, String)> {
+    match get_files_and_details(path) {
+        Ok(data) => return data,
+        Err(e) => {
+            eprintln!("Error: {}", e);
+            return Vec::new();
+        }
+    }
+}
+
 fn get_files_and_details<P: AsRef<Path>>(path: P) -> io::Result<Vec<(String, u64, String, String)>> {
     let mut result = Vec::new();
 
