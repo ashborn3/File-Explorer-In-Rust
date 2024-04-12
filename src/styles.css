@@ -335,3 +335,8 @@ text {
     text-anchor: middle; /* Center the text horizontally */
     fill: #fff; /* Text color */
 }
+
+.sidebar-file-menu li {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }

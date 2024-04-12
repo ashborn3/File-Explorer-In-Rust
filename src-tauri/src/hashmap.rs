@@ -3,6 +3,8 @@ use std::collections::hash_map::DefaultHasher;
 use std::hash::{Hash, Hasher}; 
 use std::fs;
 
+
+
 //Hash Function
 pub fn hash_path(path: &String) -> u64 {
     let mut hasher = DefaultHasher::new();
@@ -15,10 +17,11 @@ pub fn hash_map_of_target_location(hashmap: &mut HashMap<u64, Vec<String>>, path
     let folder_content = match fs::read_dir(&path) {
         Ok(dir) => dir,
         Err(_e) => {
-            // println!("Got Error for {:?} e {:?}", path, _e);
+            println!("Got Error for {:?} e {:?}", path, _e);
             return
         }
     };
+    print!("folder content {:?}", folder_content);
     let len_path = path.len() + 1;
     for content in folder_content {
         let unwrapped_content = content.unwrap().path();
@@ -43,7 +46,7 @@ pub fn hash_map_of_target_location(hashmap: &mut HashMap<u64, Vec<String>>, path
 }
 
 //Search for a key in the HashMap
-pub fn hash_map_get_path(hashmap: &HashMap<u64, Vec<String>>, key: u64) {
+pub fn hash_map_get_path(hashmap: &HashMap<u64, Vec<String>>, key: u64){
     match hashmap.get(&key) {
         Some(value) => {
             for i in value {

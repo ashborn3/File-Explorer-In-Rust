@@ -20,7 +20,7 @@ fn get_files_and_details<P: AsRef<Path>>(path: P) -> io::Result<Vec<(String, u64
     for entry in fs::read_dir(path)? {
         let entry = entry?;
         let path = entry.path();
-        if path.is_file() {
+        if path.is_file() || path.is_dir() {
             let metadata = fs::metadata(&path)?;
             let file_name = match path.file_name() {
                 Some(name) => name.to_string_lossy().into_owned(),
