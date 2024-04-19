@@ -8,13 +8,6 @@ mod walker;
 mod hashmap;
 mod cachehash;
 
-
-// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-#[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
-}
-
 #[tauri::command]
 fn query_hashmap(name: String) -> Vec<String> {
     let mut fs_hash_map: HashMap<u64, Vec<String>> = HashMap::new();
@@ -57,7 +50,6 @@ fn query_hashmap(name: String) -> Vec<String> {
 fn main() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
-            greet,
             walker::get_files_and_details_as_vector,
             query_hashmap
             ])
