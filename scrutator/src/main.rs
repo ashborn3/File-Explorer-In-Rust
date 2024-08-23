@@ -45,33 +45,5 @@ fn main() {
     let now2: std::time::Duration = now1.elapsed();
 
     println!("Took {:?} to Search for {}", now2, search_string);
-
-    // CODE NO WORK, WHY ?
-    // while true {
-    //     print!("Enter your name : ");
-        
-    //     std::io::stdin().read_line(&mut search_string).unwrap();
-
-    //     let now1 = Instant::now();
-    //     hashmap::hash_map_get_path(&fs_hash_map, hashmap::hash_path(&search_string));
-
-    //     let now2 = now1.elapsed();
-
-    //     println!("Took {:?} to Search for {}", now2, search_string);
-    // }
 }
 
-
-// WHY DID I WRITE THIS ?
-// fn format_string_for_fs(str: &str) -> String {
-//     let mut final_str = String::new();
-//     for ch in str.chars() {
-//         if ch == '/' {
-//             final_str += "\\";
-//         }
-//         else {
-//             final_str.push(ch);
-//         }
-//     }
-//     final_str
-// }
